@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkerboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/checker.css') }}">
+    <style>
+        .black{
+            background-color: {{color_1|default('black')}};
+        }
+        .red{
+            background-color: {{color_2|default('red')}};
+        }
+    </style>
+</head>
+<body>
+    <table>
+        {% for i in range(y):%}
+        <tr>
+            {% for j in range(x): %}
+                {% if i%2 == 0: %}
+                    {% if j%2 == 0: %}            
+                    <td class="black"></td>
+                    {% else:%}
+                    <td class="red"></td>
+                    {%endif%}
+                {% else:%}
+                    {% if j%2 == 0: %}            
+                    <td class="red"></td>
+                    {% else:%}
+                    <td class="black"></td>
+                    {%endif%}
+                {%endif%}    
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>
